@@ -1,0 +1,224 @@
+.about-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-main {
+  flex: 1;
+  background-color: var(--background-color);
+}
+
+/* Hero section */
+.about-hero {
+  background: linear-gradient(135deg, var(--dark-blue) 0%, #1a1a2e 100%);
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+}
+
+/* Add star-like dots to the hero background */
+.about-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 7px);
+  background-size: 50px 50px;
+  background-position: -19px -19px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.about-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.about-hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.about-hero p {
+  font-size: 1.3rem;
+  color: var(--light-blue);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* About content section */
+.about-content {
+  padding: 4rem 1.5rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 3rem;
+}
+
+.about-info h2, .about-team h2 {
+  color: var(--text-color);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.about-info h2::after, .about-team h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 3px;
+}
+
+.about-info p, .about-team p {
+  color: var(--text-color);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+/* Features list */
+.about-features {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.about-features li {
+  display: flex;
+  margin-bottom: 2rem;
+  align-items: flex-start;
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.1) 0%, rgba(144, 224, 239, 0.1) 100%);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 180, 216, 0.2);
+}
+
+.about-features div {
+  flex: 1;
+}
+
+.about-features h3 {
+  color: var(--text-color);
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.about-features p {
+  margin: 0;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* Team section */
+.about-team {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  border: 1px solid var(--border-color);
+}
+
+/* Call-to-action section */
+.about-cta {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.1) 0%, rgba(144, 224, 239, 0.1) 100%);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.about-cta h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.about-cta p {
+  margin-bottom: 1.5rem;
+}
+
+.about-cta .btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.about-cta .btn:hover {
+  background-color: #0096c7;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
+}
+
+/* Dark theme specific adjustments */
+.dark .about-team {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .about-team {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 3rem 0;
+  }
+  
+  .about-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .about-hero p {
+    font-size: 1.1rem;
+  }
+  
+  .about-content {
+    padding: 3rem 1.5rem;
+  }
+  
+  .about-info h2, .about-team h2 {
+    font-size: 1.8rem;
+  }
+} 

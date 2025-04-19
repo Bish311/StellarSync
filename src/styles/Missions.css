@@ -1,0 +1,230 @@
+.missions-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.missions-main {
+  flex: 1;
+  background-color: var(--background-color);
+}
+
+/* Hero section */
+.missions-hero {
+  background: linear-gradient(135deg, var(--dark-blue) 0%, #1a1a2e 100%);
+  padding: 3rem 0;
+  text-align: center;
+  position: relative;
+}
+
+/* Add star-like dots to the hero background */
+.missions-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 7px);
+  background-size: 50px 50px;
+  background-position: -19px -19px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.missions-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.missions-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.missions-hero p {
+  font-size: 1.2rem;
+  color: var(--light-blue);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Dashboard section */
+.missions-dashboard {
+  padding: 3rem 1.5rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Search and filter controls */
+.missions-controls {
+  margin-bottom: 2rem;
+}
+
+.search-filter {
+  display: flex;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mission-search, .mission-filter {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.mission-search {
+  flex: 1;
+}
+
+.mission-search:focus, .mission-filter:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2);
+}
+
+/* Missions grid */
+.missions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.mission-card {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.mission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.mission-header {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mission-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--text-color);
+}
+
+.mission-status {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-scheduled {
+  background-color: rgba(255, 159, 67, 0.15);
+  color: #ff9f43;
+}
+
+.status-progress {
+  background-color: rgba(0, 180, 216, 0.15);
+  color: var(--primary-color);
+}
+
+.status-completed {
+  background-color: rgba(40, 199, 111, 0.15);
+  color: #28c76f;
+}
+
+.status-planned {
+  background-color: rgba(106, 90, 205, 0.15);
+  color: #6a5acd;
+}
+
+.mission-details {
+  padding: 1.5rem;
+}
+
+.mission-agency {
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+  color: var(--text-color);
+}
+
+.mission-date {
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.mission-date span {
+  font-weight: 600;
+}
+
+.mission-description {
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.mission-actions {
+  padding: 0 1.5rem 1.5rem;
+  text-align: right;
+}
+
+.btn-details {
+  padding: 0.6rem 1.2rem;
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-details:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Dark theme specific styles */
+.dark .mission-card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark .mission-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .missions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .missions-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .search-filter {
+    flex-direction: column;
+  }
+} 
