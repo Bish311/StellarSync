@@ -7,6 +7,7 @@ const API_BASE_URL = 'http://localhost:5000/api';
  */
 export const getUpcomingLaunches = async () => {
   try {
+    console.log('Fetching upcoming launches from:', `${API_BASE_URL}/launches/upcoming`);
     const response = await fetch(`${API_BASE_URL}/launches/upcoming`);
     
     if (!response.ok) {
@@ -14,6 +15,7 @@ export const getUpcomingLaunches = async () => {
     }
     
     const data = await response.json();
+    console.log('Upcoming launches data:', data);
     return data.launches;
   } catch (error) {
     console.error('Error fetching upcoming launches:', error);
@@ -68,6 +70,7 @@ export const getLaunchById = async (id) => {
  */
 export const getAstronomyPictureOfDay = async () => {
   try {
+    console.log('Fetching APOD from:', `${API_BASE_URL}/nasa/apod`);
     const response = await fetch(`${API_BASE_URL}/nasa/apod`);
     
     if (!response.ok) {
@@ -75,6 +78,7 @@ export const getAstronomyPictureOfDay = async () => {
     }
     
     const data = await response.json();
+    console.log('APOD data:', data);
     return data.apod;
   } catch (error) {
     console.error('Error fetching NASA APOD:', error);
@@ -129,6 +133,7 @@ export const getEpicImages = async () => {
  */
 export const getMissions = async () => {
   try {
+    console.log('Fetching all missions from:', `${API_BASE_URL}/missions`);
     const response = await fetch(`${API_BASE_URL}/missions`);
     
     if (!response.ok) {
@@ -136,6 +141,7 @@ export const getMissions = async () => {
     }
     
     const data = await response.json();
+    console.log('Missions data:', data);
     return data.missions;
   } catch (error) {
     console.error('Error fetching missions:', error);

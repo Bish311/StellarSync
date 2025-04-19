@@ -21,8 +21,10 @@ router.get('/upcoming', async (req, res) => {
       return res.json({ launches: cachedData });
     }
     
-    // Fetch data from API
+    // Fetch data from API - fixed path to ensure correct URL structure
     const response = await axios.get(`${baseUrl}/launch/upcoming/?limit=10&mode=detailed`);
+    console.log('Upcoming launches URL:', `${baseUrl}/launch/upcoming/?limit=10&mode=detailed`);
+    
     const launches = response.data.results.map(launch => ({
       id: launch.id,
       name: launch.name,
