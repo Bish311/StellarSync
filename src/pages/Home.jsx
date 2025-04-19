@@ -1,6 +1,7 @@
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Footer from '../components/Footer';
+import AstronomyPicture from '../components/AstronomyPicture';
 import '../styles/Home.css';
 
 function Home() {
@@ -9,6 +10,11 @@ function Home() {
       <Header />
       <main>
         <Hero />
+        
+        {/* Astronomy Picture of the Day */}
+        <section className="apod-section">
+          <AstronomyPicture />
+        </section>
         
         {/* Features section - What we offer */}
         <section className="features">
@@ -28,7 +34,7 @@ function Home() {
                 <div className="feature-icon">📅</div>
                 <h3>Launch Schedule</h3>
                 <p>Stay informed about upcoming launches with our comprehensive schedule.</p>
-                <a href="/schedule" className="feature-link">View schedule</a>
+                <a href="/missions" className="feature-link">View launches</a>
               </div>
               
               {/* Mission archives feature */}
@@ -36,7 +42,7 @@ function Home() {
                 <div className="feature-icon">🌌</div>
                 <h3>Mission Archives</h3>
                 <p>Explore the history of space exploration through our detailed mission archives.</p>
-                <a href="/archives" className="feature-link">Browse archives</a>
+                <a href="/missions" className="feature-link">Browse missions</a>
               </div>
             </div>
           </div>
