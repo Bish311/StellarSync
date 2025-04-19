@@ -1,17 +1,48 @@
-:root {
+:root, .light {
+  /* Light theme colors */
   --primary-color: #00b4d8;
   --secondary-color: #90e0ef;
   --dark-blue: #1a1a2e;
   --light-blue: #caf0f8;
   --background-color: #f8f9fa;
+  --card-bg: #ffffff;
   --text-color: #333;
   --text-light: #777;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --header-bg: #1a1a2e;
+  --header-text: #ffffff;
+  --footer-bg: #0c0e2b;
+  --footer-text: #ffffff;
+}
+
+.dark {
+  /* Dark theme colors */
+  --primary-color: #00b4d8;
+  --secondary-color: #90e0ef;
+  --dark-blue: #090a1a;
+  --light-blue: #caf0f8;
+  --background-color: #121212;
+  --card-bg: #1e1e1e;
+  --text-color: #f0f0f0;
+  --text-light: #bbbbbb;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --header-bg: #090a1a;
+  --header-text: #ffffff;
+  --footer-bg: #090a1a;
+  --footer-text: #ffffff;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Smooth theme transitions */
+body, a, button, .btn, .feature-card, .header, .footer {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 body {
