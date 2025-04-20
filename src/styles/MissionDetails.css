@@ -1,0 +1,362 @@
+.mission-details-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mission-details-main {
+  flex: 1;
+}
+
+.mission-header-banner {
+  background: linear-gradient(135deg, #121212 0%, #1e3a8a 100%);
+  color: #ffffff;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.dark .mission-header-banner {
+  background: linear-gradient(135deg, #121212 0%, #1e3a8a 100%);
+  color: #ffffff;
+}
+
+.light .mission-header-banner {
+  background: linear-gradient(135deg, #e0f2fe 0%, #93c5fd 100%);
+  color: #1e293b;
+}
+
+.mission-title-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.mission-title-container h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.btn-back {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.light .btn-back {
+  color: #1e293b;
+}
+
+.btn-back:hover {
+  color: #93c5fd;
+}
+
+.light .btn-back:hover {
+  color: #1e40af;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.mission-details-content {
+  margin-bottom: 3rem;
+}
+
+.mission-details-section {
+  background-color: #1e293b;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.light .mission-details-section {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.mission-overview {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .mission-overview {
+    grid-template-columns: minmax(300px, 1fr) 2fr;
+  }
+}
+
+.mission-image {
+  height: 300px;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  background-color: #0f172a;
+}
+
+.light .mission-image {
+  background-color: #f1f5f9;
+}
+
+.mission-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-style: italic;
+}
+
+.mission-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .mission-info {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+.info-group h3 {
+  color: #93c5fd;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.5rem;
+}
+
+.light .info-group h3 {
+  color: #1e40af;
+  border-bottom-color: #e2e8f0;
+}
+
+.info-group p {
+  margin: 0.5rem 0;
+}
+
+.info-group strong {
+  color: #e2e8f0;
+  display: inline-block;
+  width: 80px;
+}
+
+.light .info-group strong {
+  color: #334155;
+}
+
+.mission-description h2,
+.mission-video h2 {
+  color: #93c5fd;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.light .mission-description h2,
+.light .mission-video h2 {
+  color: #1e40af;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.mission-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.light .btn-primary {
+  background-color: #2563eb;
+}
+
+.light .btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+/* Status badges */
+.mission-status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status-scheduled {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.status-progress {
+  background-color: #a855f7;
+  color: white;
+}
+
+.status-completed {
+  background-color: #22c55e;
+  color: white;
+}
+
+.status-failed {
+  background-color: #ef4444;
+  color: white;
+}
+
+.status-hold {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.status-planned {
+  background-color: #64748b;
+  color: white;
+}
+
+.status-partial {
+  background-color: #fb923c;
+  color: white;
+}
+
+.status-tbd {
+  background-color: #94a3b8;
+  color: white;
+}
+
+/* Mission success indicator */
+.mission-success h3 {
+  color: #93c5fd;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.5rem;
+}
+
+.light .mission-success h3 {
+  color: #1e40af;
+  border-bottom-color: #e2e8f0;
+}
+
+.success-indicator {
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.success-indicator.success {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.success-indicator.failure {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+/* Loading and error states */
+.loading-container,
+.error-container,
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #3498db;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.light .loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #3498db;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  color: #ef4444;
+  margin-bottom: 1.5rem;
+}
+
+.light .error-message {
+  color: #dc2626;
+}
+
+.not-found-container h2 {
+  margin-top: 0;
+  font-size: 1.75rem;
+  color: #93c5fd;
+}
+
+.light .not-found-container h2 {
+  color: #1e40af;
+}
+
+.not-found-container p {
+  margin-bottom: 1.5rem;
+} 

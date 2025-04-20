@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import Home from './pages/Home';
 import Missions from './pages/Missions';
+import MissionDetails from './pages/MissionDetails';
 import About from './pages/About';
 import './App.css';
 
@@ -13,6 +14,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/missions" element={<Missions />} />
+            <Route path="/missions/:id" element={<MissionDetails />} />
             <Route path="/about" element={<About />} />
             {/* Redirect all other routes to home */}
             <Route path="*" element={<Home />} />

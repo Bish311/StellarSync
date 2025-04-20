@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -183,7 +184,7 @@ function Missions() {
                         <p className="mission-description">{mission.description}</p>
                       </div>
                       <div className="mission-actions">
-                        <button className="btn-details">View Details</button>
+                        <Link to={`/missions/${mission.id}`} className="btn-details">View Details</Link>
                       </div>
                     </div>
                   ))
