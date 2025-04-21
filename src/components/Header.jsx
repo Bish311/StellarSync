@@ -7,7 +7,7 @@ function Header() {
     <header className="header">
       <div className="header-container">
         <div className="logo">
-          <h1>Space Mission Tracker</h1>
+          <h1>StellarSync</h1>
           <p>Explore the final frontier</p>
         </div>
         <div className="header-right">

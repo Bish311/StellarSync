@@ -17,7 +17,7 @@ function Footer() {
         <div className="footer-content">
           {/* About section */}
           <div className="footer-section">
-            <h3>Space Mission Tracker</h3>
+            <h3>StellarSync</h3>
             <p>
               Tracking space missions and keeping you informed about the 
               latest developments in space exploration.
@@ -54,7 +54,7 @@ function Footer() {
         
         {/* Copyright section */}
         <div className="copyright">
-          <p>&copy; {currentYear} Space Mission Tracker. All rights reserved.</p>
+          <p>&copy; {currentYear} StellarSync. All rights reserved.</p>
           <p className="credits">Designed with 💙 for space exploration</p>
         </div>
       </div>

@@ -13,7 +13,7 @@ function About() {
       <main className="about-main">
         <section className="about-hero">
           <div className="about-hero-content">
-            <h1>About Space Mission Tracker</h1>
+            <h1>About StellarSync</h1>
             <p>Your window to the universe of space exploration</p>
           </div>
         </section>
@@ -24,7 +24,7 @@ function About() {
               <div className="about-info">
                 <h2>Our Mission</h2>
                 <p>
-                  Space Mission Tracker was created to provide space enthusiasts, students, and curious minds 
+                  StellarSync was created to provide space enthusiasts, students, and curious minds 
                   with a comprehensive platform to track and learn about current and upcoming space missions 
                   from agencies around the world.
                 </p>
@@ -70,7 +70,7 @@ function About() {
               <div className="about-team">
                 <h2>Who We Are</h2>
                 <p>
-                  Space Mission Tracker is a passion project created by space enthusiasts who believe in the 
+                  StellarSync is a passion project created by space enthusiasts who believe in the 
                   importance of space exploration and its potential to inspire future generations.
                 </p>
                 <p>
@@ -82,7 +82,7 @@ function About() {
                   <h3>Join Us in Exploring the Cosmos</h3>
                   <p>
                     Whether you're a space enthusiast, a student, or just curious about what's happening 
-                    beyond our atmosphere, Space Mission Tracker is your gateway to the stars.
+                    beyond our atmosphere, StellarSync is your gateway to the stars.
                   </p>
                   <a href="/missions" className="btn btn-primary">Explore Missions</a>
                 </div>
