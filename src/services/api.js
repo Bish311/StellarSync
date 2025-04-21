@@ -117,7 +117,6 @@ export const getLaunchById = async (id) => {
         image: launch.image || null,
         pad: launch.pad?.name || 'Unknown',
         location: launch.pad?.location?.name || 'Unknown location',
-        videoUrl: launch.vidURLs && launch.vidURLs.length > 0 ? launch.vidURLs[0] : null,
         success: missionSuccess,
         rocket: {
           name: launch.rocket?.configuration?.name || 'Unknown rocket',

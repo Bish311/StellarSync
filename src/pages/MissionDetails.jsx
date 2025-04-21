@@ -162,20 +162,6 @@ function MissionDetails() {
                   <p>{mission.details || 'No detailed description available for this mission.'}</p>
                 </div>
                 
-                {mission.videoUrl && (
-                  <div className="mission-details-section mission-video">
-                    <h2>Mission Video</h2>
-                    <div className="video-container">
-                      <iframe 
-                        src={mission.videoUrl} 
-                        title={`${mission.name} Video`}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
-                  </div>
-                )}
-                
                 <div className="mission-actions">
                   <button 
                     className="btn-primary" 
