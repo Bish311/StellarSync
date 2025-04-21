@@ -12,6 +12,7 @@ const AstronomyPicture = () => {
       try {
         setLoading(true);
         const data = await getAstronomyPictureOfDay();
+        console.log('APOD data:', data);
         setApod(data);
         setError(null);
       } catch (err) {
@@ -48,6 +49,7 @@ const AstronomyPicture = () => {
     title: "Cosmic Cliffs in the Carina Nebula",
     explanation: "This landscape of 'mountains' and 'valleys' speckled with glittering stars is actually the edge of a nearby, young, star-forming region called NGC 3324 in the Carina Nebula. Captured in infrared light by NASA's new James Webb Space Telescope, this image reveals for the first time previously invisible areas of star birth.",
     url: "https://apod.nasa.gov/apod/image/2207/WebbFirstDeep_NASA_1080.jpg",
+    mediaType: "image",
     date: new Date().toISOString().split('T')[0]
   };
 
@@ -58,11 +60,24 @@ const AstronomyPicture = () => {
       <h3>NASA Astronomy Picture of the Day</h3>
       <div className="apod-content">
         <div className="apod-image-container">
-          <img 
-            src={displayData.url} 
-            alt={displayData.title} 
-            className="apod-image"
-          />
+          {displayData.mediaType === 'video' ? (
+            <div className="apod-video-container">
+              <iframe
+                src={displayData.url}
+                title={displayData.title}
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                allowFullScreen
+              ></iframe>
+            </div>
+          ) : (
+            <img 
+              src={displayData.url} 
+              alt={displayData.title} 
+              className="apod-image"
+            />
+          )}
         </div>
         <div className="apod-details">
           <h4>{displayData.title}</h4>
@@ -70,6 +85,16 @@ const AstronomyPicture = () => {
           <p className="apod-explanation">{displayData.explanation}</p>
           {displayData.copyright && (
             <p className="apod-copyright">Credit: {displayData.copyright}</p>
+          )}
+          {displayData.mediaType === 'image' && displayData.hdUrl && (
+            <a 
+              href={displayData.hdUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="apod-hd-link"
+            >
+              View High Resolution
+            </a>
           )}
         </div>
       </div>

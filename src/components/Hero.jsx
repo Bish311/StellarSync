@@ -1,10 +1,62 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
+import { getUpcomingLaunches, getPreviousLaunches } from '../services/api';
 import '../styles/Hero.css';
 
 function Hero() {
   // Get current theme to adjust hero content styling
   const { theme } = useContext(ThemeContext);
+  const [stats, setStats] = useState({
+    upcomingMissions: '10+',
+    recentMissions: '20+',
+    agencies: '15+'
+  });
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    const fetchMissionStats = async () => {
+      try {
+        setLoading(true);
+        
+        // Fetch upcoming and previous launches
+        const [upcoming, previous] = await Promise.all([
+          getUpcomingLaunches(),
+          getPreviousLaunches()
+        ]);
+        
+        // Extract unique agencies
+        const agencies = new Set();
+        
+        // Add agencies from upcoming launches
+        upcoming.results.forEach(launch => {
+          if (launch.launch_service_provider?.name) {
+            agencies.add(launch.launch_service_provider.name);
+          }
+        });
+        
+        // Add agencies from previous launches
+        previous.results.forEach(launch => {
+          if (launch.launch_service_provider?.name) {
+            agencies.add(launch.launch_service_provider.name);
+          }
+        });
+        
+        // Update stats
+        setStats({
+          upcomingMissions: upcoming.results.length.toString(),
+          recentMissions: previous.results.length.toString(),
+          agencies: agencies.size.toString()
+        });
+      } catch (error) {
+        console.error('Error fetching mission stats:', error);
+        // Keep default stats on error
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchMissionStats();
+  }, []);
   
   return (
     <section className={`hero ${theme}`}>
@@ -28,16 +80,16 @@ function Hero() {
         {/* Mission stats */}
         <div className="mission-stats">
           <div className="stat">
-            <span className="stat-number">120+</span>
-            <span className="stat-label">Active Missions</span>
+            <span className="stat-number">{stats.upcomingMissions}</span>
+            <span className="stat-label">Upcoming Missions</span>
           </div>
           <div className="stat">
-            <span className="stat-number">50+</span>
+            <span className="stat-number">{stats.recentMissions}</span>
+            <span className="stat-label">Recent Missions</span>
+          </div>
+          <div className="stat">
+            <span className="stat-number">{stats.agencies}</span>
             <span className="stat-label">Space Agencies</span>
-          </div>
-          <div className="stat">
-            <span className="stat-number">24/7</span>
-            <span className="stat-label">Live Updates</span>
           </div>
         </div>
       </div>

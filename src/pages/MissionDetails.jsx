@@ -50,20 +50,26 @@ function MissionDetails() {
   const getStatusClass = (status) => {
     if (!status) return '';
     
-    switch(status.toLowerCase()) {
-      case 'go': return 'status-scheduled';
-      case 'success': return 'status-completed';
-      case 'failure': return 'status-failed';
-      case 'hold': return 'status-hold';
-      case 'in flight': return 'status-progress';
-      case 'partial failure': return 'status-partial';
-      case 'to be determined': return 'status-tbd';
-      case 'scheduled': return 'status-scheduled';
-      case 'in progress': return 'status-progress';
-      case 'completed': return 'status-completed';
-      case 'planned': return 'status-planned';
-      default: return '';
+    const statusLower = status.toLowerCase();
+    
+    // Map status to appropriate class
+    if (statusLower.includes('go') || statusLower.includes('scheduled')) {
+      return 'status-scheduled';
+    } else if (statusLower.includes('progress') || statusLower.includes('flight')) {
+      return 'status-progress';
+    } else if (statusLower.includes('success') || statusLower.includes('completed')) {
+      return 'status-completed';
+    } else if (statusLower.includes('fail')) {
+      return 'status-failed';
+    } else if (statusLower.includes('hold')) {
+      return 'status-hold';
+    } else if (statusLower.includes('tbd')) {
+      return 'status-tbd';
+    } else if (statusLower.includes('planned')) {
+      return 'status-planned';
     }
+    
+    return '';
   };
 
   return (
@@ -132,14 +138,22 @@ function MissionDetails() {
                       </div>
                     )}
                     
-                    {mission.success !== null && (
-                      <div className="mission-success">
-                        <h3>Mission Outcome</h3>
-                        <p className={mission.success ? "success-indicator success" : "success-indicator failure"}>
-                          {mission.success ? "Success" : "Failure"}
-                        </p>
-                      </div>
-                    )}
+                    {/* Always show a mission outcome status */}
+                    <div className="mission-success">
+                      <h3>Mission Outcome</h3>
+                      {mission.success === true && (
+                        <p className="success-indicator success">Success</p>
+                      )}
+                      {mission.success === false && (
+                        <p className="success-indicator failure">Failure</p>
+                      )}
+                      {mission.success === null && new Date(mission.date) > new Date() && (
+                        <p className="success-indicator pending">Pending</p>
+                      )}
+                      {mission.success === null && new Date(mission.date) <= new Date() && (
+                        <p className="success-indicator tbd">TBD</p>
+                      )}
+                    </div>
                   </div>
                 </div>
                 

@@ -83,37 +83,68 @@ function Missions() {
     fetchMissions();
   }, []);
 
+  // Function to check if a status matches a filter
+  const statusMatches = (status, filter) => {
+    if (filter === 'all') return true;
+    return (status || '').toLowerCase() === filter.toLowerCase();
+  };
+
   // Apply filters to missions
   const filteredMissions = missions.filter(mission => {
-    const matchesSearch = mission.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         mission.agency.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         mission.description.toLowerCase().includes(searchTerm.toLowerCase());
+    // Safely handle potentially undefined properties
+    const name = mission.name || '';
+    const agency = mission.agency || '';
+    const description = mission.description || '';
+    const status = mission.status || '';
+
+    const matchesSearch = 
+      name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      agency.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      description.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesStatus = statusFilter === 'all' || 
-                         mission.status.toLowerCase() === statusFilter.toLowerCase();
+    // Use the custom status matching function
+    const matchesStatus = statusMatches(status, statusFilter);
     
     return matchesSearch && matchesStatus;
   });
 
   // Function to format date
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    if (!dateString) return 'Unknown';
+    
+    try {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString(undefined, options);
+    } catch (error) {
+      console.error('Error formatting date:', error);
+      return 'Invalid date';
+    }
   };
   
   // Function to get status badge class
   const getStatusClass = (status) => {
-    switch(status.toLowerCase()) {
-      case 'scheduled': return 'status-scheduled';
-      case 'in progress': return 'status-progress';
-      case 'completed': return 'status-completed';
-      case 'planned': return 'status-planned';
-      case 'go': return 'status-scheduled';
-      case 'success': return 'status-completed';
-      case 'failure': return 'status-failed';
-      case 'hold': return 'status-hold';
-      default: return '';
+    if (!status) return '';
+    
+    const statusLower = status.toLowerCase();
+    
+    // Map status to appropriate class
+    if (statusLower.includes('go') || statusLower.includes('scheduled')) {
+      return 'status-scheduled';
+    } else if (statusLower.includes('progress') || statusLower.includes('flight')) {
+      return 'status-progress';
+    } else if (statusLower.includes('success') || statusLower.includes('completed')) {
+      return 'status-completed';
+    } else if (statusLower.includes('fail')) {
+      return 'status-failed';
+    } else if (statusLower.includes('hold')) {
+      return 'status-hold';
+    } else if (statusLower.includes('tbd')) {
+      return 'status-tbd';
+    } else if (statusLower.includes('planned')) {
+      return 'status-planned';
     }
+    
+    return '';
   };
 
   return (
@@ -144,14 +175,13 @@ function Missions() {
                   onChange={(e) => setStatusFilter(e.target.value)}
                 >
                   <option value="all">All Statuses</option>
-                  <option value="scheduled">Scheduled</option>
-                  <option value="in progress">In Progress</option>
-                  <option value="completed">Completed</option>
-                  <option value="planned">Planned</option>
-                  <option value="go">Go</option>
-                  <option value="success">Success</option>
-                  <option value="failure">Failure</option>
-                  <option value="hold">Hold</option>
+                  <option value="Go For Launch">Go For Launch</option>
+                  <option value="Scheduled">Scheduled</option>
+                  <option value="In Flight">In Flight</option>
+                  <option value="Success">Success</option>
+                  <option value="Failure">Failure</option>
+                  <option value="Hold">Hold</option>
+                  <option value="TBD">TBD</option>
                 </select>
               </div>
             </div>
@@ -203,4 +233,4 @@ function Missions() {
   );
 }
 
-export default Missions; 
+export default Missions;
