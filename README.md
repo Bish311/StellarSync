@@ -36,7 +36,7 @@ StellarSync is a modern, interactive web application that provides comprehensive
 1. Clone the repository:
    ```bash
    git clone https://github.com/Bish311/StellarSync.git
-   cd space-mission-tracker
+   cd StellarSync
    ```
 
 2. Install dependencies:
